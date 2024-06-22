@@ -1,0 +1,49 @@
+Character Hashing
+
+s = "abcdabcfc"
+
+a -> 2
+c -> 2
+z -> 0
+
+Simple code: O(Q * N)
+f( char c, s) {
+    count = 0;
+    for (i=0, i<n, i++) {
+        if (s[i] == c) count++;
+    }
+    return count;
+}
+
+Max - 26 lowercase characters
+
+arr[26] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+           a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
+
+ASCII values:   'a' -> 97
+                'z' -> 122
+                'f' -> 102
+
+total - 256 characters
+make a hash array of size 256 and no need to subtract 
+
+
+int main() {
+    string s;
+    cin >> s;
+
+    // pre compute
+    int hash[256] = {0};
+    for (int i=0; i<s.size(); i++) {
+        hash[s[i]]++;
+    }
+    int q;
+    cin>>q;
+    while(q--) {
+        char c;
+        cin >> c;
+        // fetch
+        cout << hash[c] << endl;
+    }
+    return 0;
+}

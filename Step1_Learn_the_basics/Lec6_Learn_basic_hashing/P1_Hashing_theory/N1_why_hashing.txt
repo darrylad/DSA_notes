@@ -11,5 +11,29 @@ if ar[] = [1,2,1,3,2]
 Bruteforce method? 
 
 int f(number, ar[]) {
-    
+    count = 0;
+    for (int i = 0; i<n; i++) {
+        if(ar[i] == number) count = count + 1;
+    }
+    return count;
 }
+
+time complexity? O(N) 
+if i want to find Q numbers, total time complexity is Q * O(N) or O(Q*N)
+
+10^8  ~  1 second
+
+if Q = 10^5 and N = 10^5
+then time taken is 10^2 which is too long
+
+
+# Hashing -> prestoring/fetching
+
+ar[] = [1, 2, 1, 3, 2]       if i know this array can have number till 12
+
+hash[13] = [0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]     <-  frequency of 
+               1  2  3  4  5  6  7  8  9  10 11 12      <- this number
+
+what if the max number can be 10^9 ?
+max number inside main can be 10^6 , globally - 10^7 , higher will throw segmentation fault.
+
