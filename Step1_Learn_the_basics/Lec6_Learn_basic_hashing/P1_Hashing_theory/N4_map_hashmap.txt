@@ -64,37 +64,3 @@ storing and fetching takes O(1) in average and best case. worst case O(N), but t
 
 
 # How does hashing work? How is the data structure created/designed?
-
-Hashing    - Division method
-           - Folding method
-           - Mid square method
-
-what is the Division Method?
-
-arr[] = [2, 5, 16, 28, 139]             say you cannot have elements larger than 10 in the hash array.
-
-trick of division method - arr[i] % 10
-
-hash[] = [0, 0, 1, 0, 0, 1, 1, 0, 1, 1]
-          0  1  2  3  4  5  6  7  8  9 
-
-                                                139 -> 139%10 = 9 so appears 1
-
-collisions: what if arr[] = [2, 5, 16, 28, 139, 38, 48, 28, 18]
-
-arr[i] % 10 =                2  5   6   8    9   8   8   8   8
-
-                        0
-                        1
-                        2 -> 2
-                        3
-                        4
-                        5 -> 5
-                        6 -> 16
-                        7
-                        8 -> 18 -> 28 -> 28 -> 38 -> 48    'chaining' in sorted order
-                        9
-
-if we want to find 18, it goes to 8 and there are search algorithims to find 18 in minimal time
-
-collisions -> if all elements % 10 was 8, then all the numbers will be on 8. Now, this is the worst case that takes O(N)

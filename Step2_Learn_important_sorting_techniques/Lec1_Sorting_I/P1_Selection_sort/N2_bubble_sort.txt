@@ -1,0 +1,79 @@
+Bubble sort
+
+Pushes the maximum to the last by adjacent swaps.
+
+arr[] = [13, 46, 24, 52, 20, 9]
+
+are the 1st two in sorted order? yes
+
+2nd two? no
+
+arr[] = [13, 24, 46, 52, 20, 9]
+
+3rd two? yes
+
+4th two? no
+
+arr[] = [13, 24, 46, 20, 52, 9]
+
+5th two? no
+
+arr[] = [13, 24, 46, 20, 9, 52]
+
+one round of adjacent swapping is done. now the max element 52 is at the last.
+
+repeating, after 2nd round, 
+arr[] = [13, 24, 20, 9, 46, 52]
+now the max and 2nd max elements are at the end.
+
+repeating, after 3rd round,
+arr[] = [13, 20, 9, 24, 46, 52]
+
+repeating, after 4th round,
+arr[] = [13, 9, 20, 24, 46, 52]
+
+repeating, after 5th round,
+arr[] = [9, 13, 20, 24, 46, 52]
+
+now the array is sorted.
+
+method?
+1st loop    :  0 - n-1
+2nd loop    :  0 - n-2
+3rd loop    :  0 - n-3
+        .
+        .
+(n-1)th loop:  0 - 1
+
+
+for (int i = n-1; i>=1; i--) {
+    for(int j = 0; j <= i-1; j++) {
+        if (a[j] > a[j+1])  swap(a[j], a[j+1]);
+    }
+}
+
+Time complexity : n + n-1 + n-2 + ... + 2 + 1 = n(n-1)/2  =  O(n^2)
+- worst complexity
+
+
+# Can it be optimized? yes
+
+say if arr[] = [2, 3, 5, 15, 20]
+this is already sorted.
+
+there will be no swaps in the 1st round - meaning arr is already sorted. 
+Now time complexity is O(n) for best case.
+
+
+for (int i = n-1; i>=1; i--) {
+    int didSwap = 0;
+    for(int j = 0; j <= i-1; j++) {
+        if (a[j] > a[j+1])  {
+            swap(a[j], a[j+1]);
+            didSwap = 1;
+        }
+    }
+    if (didSwap == 0) {
+        break;
+    }
+}
